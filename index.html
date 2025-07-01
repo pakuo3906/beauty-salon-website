@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Crown - 東大和市の美容院</title>
+    <meta name="description" content="東大和市南街にある美容院Natural Crown。夫婦で営む地域密着型サロンで、温かく親しみやすい雰囲気が自慢です。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Noto Sans JP', 'sans-serif'],
+                        'script': ['Pacifico', 'cursive']
+                    },
+                    colors: {
+                        'salon-pink': '#F8BBD9',
+                        'salon-purple': '#E4C1F9',
+                        'salon-blue': '#A8DADC',
+                        'salon-green': '#F1FAEE',
+                        'salon-dark': '#264653'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-salon-dark overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-salon-pink/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-script text-salon-dark">Natural Crown</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link">ホーム</a>
+                        <a href="#about" class="nav-link">サロン紹介</a>
+                        <a href="#services" class="nav-link">サービス</a>
+                        <a href="#reviews" class="nav-link">お客様の声</a>
+                        <a href="#access" class="nav-link">アクセス</a>
+                        <a href="#contact" class="nav-link bg-salon-pink px-4 py-2 rounded-full text-white hover:bg-salon-purple transition-colors">予約</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-btn p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="black" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white/95 backdrop-blur-md">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="mobile-nav-link">ホーム</a>
+                <a href="#about" class="mobile-nav-link">サロン紹介</a>
+                <a href="#services" class="mobile-nav-link">サービス</a>
+                <a href="#reviews" class="mobile-nav-link">お客様の声</a>
+                <a href="#access" class="mobile-nav-link">アクセス</a>
+                <a href="#contact" class="mobile-nav-link">予約</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="hero-bg absolute inset-0 z-0"></div>
+        <div class="hero-overlay absolute inset-0 bg-gradient-to-br from-salon-pink/20 via-transparent to-salon-blue/20 z-10"></div>
+        
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+            <div class="hero-content">
+                <h2 class="hero-title text-6xl md:text-8xl font-script text-salon-dark mb-6">
+                    Natural Crown
+                </h2>
+                <p class="hero-subtitle text-2xl md:text-4xl font-light mb-8 text-salon-dark">
+                    <span class="kinetic-text">髪に、笑顔を。</span>
+                </p>
+                <p class="hero-description text-lg md:text-xl mb-12 text-salon-dark/80 max-w-2xl mx-auto leading-relaxed">
+                    東大和市で夫婦が営む温かな美容院。<br>
+                    笑いが絶えない賑やかで親しみやすい空間で、<br>
+                    あなたの美しさを引き出します。
+                </p>
+                <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact" class="cta-button bg-salon-pink text-white px-8 py-4 rounded-full text-lg hover:bg-salon-purple transition-all duration-300 hover:scale-105">
+                        今すぐ予約
+                    </a>
+                    <a href="#services" class="cta-button-outline border-2 border-salon-dark text-salon-dark px-8 py-4 rounded-full text-lg hover:bg-salon-dark hover:text-white transition-all duration-300">
+                        サービス一覧
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements absolute inset-0 pointer-events-none z-15">
+            <div class="floating-circle absolute top-20 left-10 w-20 h-20 bg-salon-pink/30 rounded-full"></div>
+            <div class="floating-circle absolute top-40 right-20 w-16 h-16 bg-salon-blue/30 rounded-full"></div>
+            <div class="floating-circle absolute bottom-40 left-20 w-24 h-24 bg-salon-purple/30 rounded-full"></div>
+            <div class="floating-circle absolute bottom-20 right-10 w-12 h-12 bg-salon-green/50 rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-br from-salon-green to-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl font-script text-salon-dark mb-4">
+                    サロン紹介
+                </h2>
+                <p class="section-subtitle text-lg text-salon-dark/70">
+                    Natural Crownについて
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="about-image">
+                    <div class="relative">
+                        <div class="image-placeholder bg-gradient-to-br from-salon-pink to-salon-purple rounded-3xl h-96 flex items-center justify-center text-white text-xl">
+                            夫婦の写真エリア
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-salon-blue rounded-full opacity-70"></div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3 class="text-3xl font-medium mb-6 text-salon-dark">
+                        温かい笑顔でお迎えします
+                    </h3>
+                    <p class="text-lg leading-relaxed mb-6 text-salon-dark/80">
+                        私たち夫婦は、東大和市で地域の皆様に愛される美容院を目指しています。
+                        お客様一人ひとりとの出会いを大切にし、髪の悩みから日常の話まで、
+                        何でも気軽にお話しいただける空間づくりを心がけています。
+                    </p>
+                    <p class="text-lg leading-relaxed mb-8 text-salon-dark/80">
+                        技術はもちろん、お客様にリラックスしていただけるよう、
+                        笑いが絶えない賑やかで親しみやすい雰囲気を大切にしています。
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-xl">
+                            ♪
+                        </div>
+                        <p class="text-salon-dark font-medium">
+                            笑顔と安心をお届けします
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl font-script text-salon-dark mb-4">
+                    サービス
+                </h2>
+                <p class="section-subtitle text-lg text-salon-dark/70">
+                    あなたに最適なメニューをご提案
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card group">
+                    <div class="bg-gradient-to-br from-salon-pink to-salon-purple p-8 rounded-3xl h-full hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <div class="text-4xl mb-4 text-white">✂️</div>
+                        <h3 class="text-2xl font-medium mb-4 text-white">カット</h3>
+                        <p class="text-white/90 mb-6 leading-relaxed">
+                            お客様の骨格や髪質に合わせた、似合うスタイルをご提案いたします。
+                        </p>
+                        <div class="text-white font-medium">
+                            受付時間: 17時まで
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card group">
+                    <div class="bg-gradient-to-br from-salon-blue to-salon-green p-8 rounded-3xl h-full hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <div class="text-4xl mb-4 text-black">🎨</div>
+                        <h3 class="text-2xl font-medium mb-4 text-salon-dark">カラー</h3>
+                        <p class="text-salon-dark/80 mb-6 leading-relaxed">
+                            トレンドカラーから自然な色合いまで、幅広いカラーリングに対応。
+                        </p>
+                        <div class="text-salon-dark font-medium">
+                            受付時間: 16時まで
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card group">
+                    <div class="bg-gradient-to-br from-salon-purple to-salon-pink p-8 rounded-3xl h-full hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <div class="text-4xl mb-4 text-white">💫</div>
+                        <h3 class="text-2xl font-medium mb-4 text-white">パーマ</h3>
+                        <p class="text-white/90 mb-6 leading-relaxed">
+                            自然なウェーブから華やかなカールまで、お好みのスタイルを実現。
+                        </p>
+                        <div class="text-white font-medium">
+                            受付時間: 16時まで
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours Section -->
+    <section class="py-16 bg-gradient-to-r from-salon-green to-salon-blue/20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-script text-salon-dark mb-4">営業時間</h2>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-medium mb-4 text-salon-dark">営業時間</h3>
+                        <div class="space-y-2 text-salon-dark/80">
+                            <p>火曜日以外の平日: 9:00～18:00</p>
+                            <p>土曜日: 9:00～18:00</p>
+                            <p>日曜日・祝日: 9:00～18:00</p>
+                            <p class="text-salon-purple font-medium">定休日: 火曜日（他不定休有り）</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium mb-4 text-salon-dark">受付時間</h3>
+                        <div class="space-y-2 text-salon-dark/80">
+                            <p>パーマ・カラー: 16時まで</p>
+                            <p>カット: 17時まで</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl font-script text-salon-dark mb-4">
+                    お客様の声
+                </h2>
+                <p class="section-subtitle text-lg text-salon-dark/70">
+                    多くの方にご愛顧いただいています
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="review-card">
+                    <div class="bg-gradient-to-br from-salon-green to-white p-6 rounded-3xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-salon-pink rounded-full flex items-center justify-center text-white font-medium">
+                                A
+                            </div>
+                            <div class="ml-4">
+                                <p class="font-medium text-salon-dark">Aさん（30代女性）</p>
+                                <div class="text-salon-pink">★★★★★</div>
+                            </div>
+                        </div>
+                        <p class="text-salon-dark/80 leading-relaxed">
+                            いつも笑顔で迎えてくれて、話しやすい雰囲気が大好きです。
+                            技術も確かで、毎回理想のスタイルにしてもらえます。
+                        </p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="bg-gradient-to-br from-salon-blue/20 to-white p-6 rounded-3xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-salon-blue rounded-full flex items-center justify-center text-white font-medium">
+                                B
+                            </div>
+                            <div class="ml-4">
+                                <p class="font-medium text-salon-dark">Bさん（40代女性）</p>
+                                <div class="text-salon-pink">★★★★★</div>
+                            </div>
+                        </div>
+                        <p class="text-salon-dark/80 leading-relaxed">
+                            家族みんなでお世話になっています。
+                            子どもも喜んで通えるアットホームな雰囲気が魅力です。
+                        </p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="bg-gradient-to-br from-salon-purple/20 to-white p-6 rounded-3xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-salon-purple rounded-full flex items-center justify-center text-white font-medium">
+                                C
+                            </div>
+                            <div class="ml-4">
+                                <p class="font-medium text-salon-dark">Cさん（50代女性）</p>
+                                <div class="text-salon-pink">★★★★★</div>
+                            </div>
+                        </div>
+                        <p class="text-salon-dark/80 leading-relaxed">
+                            丁寧なカウンセリングで、髪の悩みもしっかり聞いてくれます。
+                            仕上がりにいつも満足しています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="py-20 bg-gradient-to-br from-salon-green to-salon-blue/20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl font-script text-salon-dark mb-4">
+                    アクセス
+                </h2>
+                <p class="section-subtitle text-lg text-salon-dark/70">
+                    東大和市立第２中学校隣
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="access-info">
+                    <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-lg mb-8">
+                        <h3 class="text-2xl font-medium mb-6 text-salon-dark">店舗情報</h3>
+                        <div class="space-y-4 text-salon-dark/80">
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 mr-3 mt-1">
+                                    <svg fill="black" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium">住所</p>
+                                    <p>東大和市南街 2-41-7</p>
+                                    <p class="text-sm">（東大和市立第２中学校隣）</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 mr-3 mt-1">
+                                    <svg fill="black" viewBox="0 0 24 24">
+                                        <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L9 8.3c-.2.2-.3.4-.3.7 0 .6.4 1.1.9 1.3L11 11.4v1.6L9.8 8.9z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium">最寄り駅</p>
+                                    <p>東大和市駅から徒歩15分</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 mr-3 mt-1">
+                                    <svg fill="black" viewBox="0 0 24 24">
+                                        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium">駐車場</p>
+                                    <p>お店の向かい、左手前側（16.17番）</p>
+                                    <p class="text-sm">満車の場合はコインパーキングをご利用ください</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-lg">
+                        <h3 class="text-xl font-medium mb-4 text-salon-dark">バスでお越しの場合</h3>
+                        <div class="space-y-4 text-sm text-salon-dark/80">
+                            <div>
+                                <p class="font-medium text-salon-dark mb-2">東大和駅から</p>
+                                <p>イオンモール行き又は東村山駅行き乗車</p>
+                                <p>→ 東大和病院前バス停下車（約5分）</p>
+                                <p>→ Welparkを右折、直進200m左（徒歩4分）</p>
+                            </div>
+                            <div>
+                                <p class="font-medium text-salon-dark mb-2">東村山方面から</p>
+                                <p>東村山駅西口から立川行きバス乗車</p>
+                                <p>→ 東大和病院バス停下車（約20分）</p>
+                                <p>→ Welparkを右折、直進200m左（徒歩4分）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-area">
+                    <div class="bg-gradient-to-br from-salon-pink to-salon-purple rounded-3xl h-96 flex items-center justify-center text-white text-xl">
+                        Google Map エリア
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-4xl md:text-5xl font-script text-salon-dark mb-4">
+                    ご予約・お問い合わせ
+                </h2>
+                <p class="section-subtitle text-lg text-salon-dark/70">
+                    お気軽にお電話ください
+                </p>
+            </div>
+            <div class="text-center">
+                <div class="bg-gradient-to-br from-salon-pink to-salon-purple rounded-3xl p-12 shadow-lg mb-8">
+                    <div class="text-white">
+                        <div class="mb-4 flex justify-center">
+                            <svg class="w-16 h-16" fill="white" viewBox="0 0 24 24">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                        </div>
+                        <p class="text-xl mb-4">お電話でのご予約</p>
+                        <p class="text-4xl font-bold mb-6">042-XXX-XXXX</p>
+                        <p class="text-lg opacity-90">
+                            営業時間内にお気軽にお電話ください<br>
+                            ご質問やご相談もお受けしています
+                        </p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <a href="tel:042-XXX-XXXX" class="bg-black text-white px-8 py-4 rounded-full text-lg hover:bg-black/80 transition-all duration-300 hover:scale-105 block flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="white" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        電話で予約
+                    </a>
+                    <a href="#" class="border-2 border-salon-pink text-salon-pink px-8 py-4 rounded-full text-lg hover:bg-salon-pink hover:text-white transition-all duration-300 hover:scale-105 block">
+                        📧 メールで相談
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-salon-dark text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-script mb-4">Natural Crown</h3>
+                    <p class="text-white/80 leading-relaxed">
+                        東大和市で夫婦が営む美容院。<br>
+                        温かく親しみやすい雰囲気で<br>
+                        お客様をお迎えしています。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">営業時間</h4>
+                    <div class="text-white/80 text-sm space-y-1">
+                        <p>平日・土日祝: 9:00～18:00</p>
+                        <p>定休日: 火曜日（他不定休有り）</p>
+                        <p class="pt-2">受付時間</p>
+                        <p>パーマ・カラー: 16時まで</p>
+                        <p>カット: 17時まで</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">お問い合わせ</h4>
+                    <div class="text-white/80 text-sm space-y-2">
+                        <p class="flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="white" viewBox="0 0 24 24">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            042-XXX-XXXX
+                        </p>
+                        <p class="flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="white" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            東大和市南街 2-41-7
+                        </p>
+                        <p>（東大和市立第２中学校隣）</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
+                <p>&copy; 2024 Natural Crown. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="tel:042-XXX-XXXX" class="floating-cta bg-black text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-black/80 transition-all duration-300 hover:scale-110">
+            <svg class="w-8 h-8" fill="white" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
